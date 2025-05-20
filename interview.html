@@ -202,6 +202,16 @@
             font-weight: bold;
         }
 
+        .youtube-embed {
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+    overflow: hidden;
+    }
+
+    .youtube-embed iframe {
+    display: block;
+    }
+
         /* === SAMPLE INTERVIEW SECTION === */
         .sample-interview {
             margin: 3rem 0;
@@ -597,18 +607,25 @@
         <h2 class="text-center">Sample Interviews</h2>
         <p class="text-center">Watch these mock interviews to better understand what to expect and how to respond effectively.</p>
         
-        <div class="sample-interview">
-            <div class="video-container">
-                <div class="video-card">
-                    <div class="video-placeholder">
-                        <div class="play-button"><i class="fas fa-play-circle"></i></div>
-                        <p>Entry-Level Position Interview</p>
-                    </div>
-                    <div class="video-info">
-                        <h4>Entry-Level Job Interview</h4>
-                        <p>A demonstration of a typical interview for someone starting their career, covering education, internships, and transferable skills.</p>
-                    </div>
-                </div>
+        <div class="video-card" style="text-align: center;">
+    <div class="youtube-embed">
+        <iframe 
+            width="50%" 
+            height="400" 
+            
+            src="https://www.youtube.com/embed/sokXkn8bfjM" 
+            title="Entry-Level Position Interview" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="video-info">
+        <h4>Entry-Level Job Interview</h4>
+        <p>A demonstration of a typical interview for someone starting their career, covering education, internships, and transferable skills.</p>
+    </div>
+</div>
                 
                 <div class="video-card">
                     <div class="video-placeholder">
