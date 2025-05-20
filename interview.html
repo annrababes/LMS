@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Interview Preparation Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --primary-dark: #3730A3;
+            --secondary: #06B6D4;
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --gray: #94A3B8;
+            --gray-light: #E2E8F0;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: #fff;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* === HEADER === */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.75rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* === HERO === */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* === CONTENT MODULES === */
+        .content-module {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .module-header {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .module-content {
+            padding: 2rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .tips-list li {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .tips-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* === SAMPLE INTERVIEW SECTION === */
+        .sample-interview {
+            margin: 3rem 0;
+        }
+
+        .video-container {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            background-color: white;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-placeholder {
+            height: 200px;
+            background-color: var(--gray-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .play-button {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        /* === DO'S AND DON'TS === */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table th {
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .comparison-table .do {
+            color: #10B981;
+        }
+
+        .comparison-table .dont {
+            color: #EF4444;
+        }
+
+        /* === FAQ ACCORDION === */
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            background-color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: var(--gray-light);
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.3s;
+            background-color: white;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.25rem 1.25rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0.5rem 0;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .answer-strategy {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--gray-light);
+            border-radius: 0.25rem;
+        }
+
+        .answer-strategy h5 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 1rem;
+            color: var(--gray-light);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--gray);
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--gray);
+            padding-top: 1rem;
+            color: var(--gray);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 0.75rem;
+            }
+            
+            .video-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                Interview Prep
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#interview-tips">Preparation Tips</a></li>
+                <li><a href="#dos-donts">Do's & Don'ts</a></li>
+                <li><a href="#sample-interviews">Sample Interviews</a></li>
+                <li><a href="#common-questions">Common Questions</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Ace Your Next Interview</h1>
+        <p>Master the art of interviewing with expert tips, real-world examples, and proven strategies to help you land your dream job.</p>
+        <div class="hero-buttons">
+            <a href="#interview-tips" class="btn btn-primary">Preparation Guide</a>
+            <a href="#common-questions" class="btn btn-secondary">Practice Questions</a>
+        </div>
+    </div>
+</section>
+
+<!-- INTERVIEW PREPARATION TIPS -->
+<section class="section" id="interview-tips">
+    <div class="container">
+        <h2 class="text-center">Interview Preparation Tips</h2>
+        <p class="text-center">Follow these expert tips to thoroughly prepare for your upcoming interview.</p>
+        
+        <div class="content-module">
+            <div class="module-header">
+                <h3>Before the Interview</h3>
+            </div>
+            <div class="module-content">
+                <p>Proper preparation is key to interview success. Here's how to make sure you're ready:</p>
+                
+                <ul class="tips-list">
+                    <li>
+                        <h4>Research the Company</h4>
+                        <p>Learn about the company's mission, values, products/services, recent news, and challenges. Visit their website, social media profiles, and read recent press releases.</p>
+                    </li>
+                    <li>
+                        <h4>Study the Job Description</h4>
+                        <p>Analyze the job requirements and prepare examples from your experience that demonstrate relevant skills and achievements.</p>
+                    </li>
+                    <li>
+                        <h4>Prepare Your Answers</h4>
+                        <p>Practice responses to common interview questions, focusing on clear, concise answers with specific examples.</p>
+                    </li>
+                    <li>
+                        <h4>Develop Questions to Ask</h4>
+                        <p>Prepare 3-5 thoughtful questions about the role, team, company culture, and growth opportunities to show your genuine interest.</p>
+                    </li>
+                    <li>
+                        <h4>Plan Your Appearance</h4>
+                        <p>Select professional attire appropriate for the company's culture, ensuring everything is clean, ironed, and fits well.</p>
+                    </li>
+                    <li>
+                        <h4>Prepare Your Materials</h4>
+                        <p>Bring multiple copies of your resume, a notepad, pen, portfolio if applicable, and a list of references.</p>
+                    </li>
+                    <li>
+                        <h4>Practice Interview Techniques</h4>
+                        <p>Conduct mock interviews with a friend or mentor, or practice in front of a mirror to improve your delivery and body language.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DO'S AND DON'TS -->
+<section class="section" id="dos-donts">
+    <div class="container">
+        <h2 class="text-center">Interview Do's and Don'ts</h2>
+        <p class="text-center">Follow these guidelines to make a positive impression during your interview.</p>
+        
+        <div class="content-module">
+            <div class="module-header">
+                <h3>Professional Behavior During Interviews</h3>
+            </div>
+            <div class="module-content">
+                <table class="comparison-table">
+                    <tr>
+                        <th>Do</th>
+                        <th>Don't</th>
+                    </tr>
+                    <tr>
+                        <td class="do">Arrive 10-15 minutes early</td>
+                        <td class="dont">Show up late or too early (30+ minutes)</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Make eye contact and offer a firm handshake</td>
+                        <td class="dont">Avoid eye contact or give a weak handshake</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Listen carefully and ask for clarification if needed</td>
+                        <td class="dont">Interrupt the interviewer</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Demonstrate positive body language (sit up straight, nod)</td>
+                        <td class="dont">Fidget, slouch, or cross arms defensively</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Provide specific examples of your achievements</td>
+                        <td class="dont">Give vague or generic answers</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Speak positively about previous employers</td>
+                        <td class="dont">Criticize or complain about past jobs/bosses</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Show enthusiasm for the role and company</td>
+                        <td class="dont">Appear disinterested or overly casual</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Turn off your phone before entering</td>
+                        <td class="dont">Check your phone during the interview</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Ask thoughtful questions about the role and company</td>
+                        <td class="dont">Focus only on salary, benefits, or time off</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Thank the interviewer and follow up with a thank-you email</td>
+                        <td class="dont">Leave without expressing appreciation for their time</td>
+                    </tr>
+                </table>
+                
+                <h4>Interview Etiquette for Virtual Interviews</h4>
+                <ul class="tips-list">
+                    <li>
+                        <h4>Test Your Technology</h4>
+                        <p>Ensure your camera, microphone, and internet connection work properly before the interview.</p>
+                    </li>
+                    <li>
+                        <h4>Create a Professional Environment</h4>
+                        <p>Choose a quiet, well-lit location with a clean, neutral background. Minimize potential interruptions.</p>
+                    </li>
+                    <li>
+                        <h4>Dress Professionally</h4>
+                        <p>Wear complete professional attire as you would for an in-person interview, not just from the waist up.</p>
+                    </li>
+                    <li>
+                        <h4>Look at the Camera</h4>
+                        <p>Make "eye contact" by looking at your camera rather than the screen when speaking.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SAMPLE INTERVIEWS -->
+<section class="section" id="sample-interviews">
+    <div class="container">
+        <h2 class="text-center">Sample Interviews</h2>
+        <p class="text-center">Watch these mock interviews to better understand what to expect and how to respond effectively.</p>
+        
+        <div class="sample-interview">
+            <div class="video-container">
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-button"><i class="fas fa-play-circle"></i></div>
+                        <p>Entry-Level Position Interview</p>
+                    </div>
+                    <div class="video-info">
+                        <h4>Entry-Level Job Interview</h4>
+                        <p>A demonstration of a typical interview for someone starting their career, covering education, internships, and transferable skills.</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-button"><i class="fas fa-play-circle"></i></div>
+                        <p>Mid-Career Position Interview</p>
+                    </div>
+                    <div class="video-info">
+                        <h4>Mid-Level Professional Interview</h4>
+                        <p>See how to effectively communicate your professional achievements and leadership experience for a role with more responsibility.</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-button"><i class="fas fa-play-circle"></i></div>
+                        <p>Technical Position Interview</p>
+                    </div>
+                    <div class="video-info">
+                        <h4>Technical Interview Example</h4>
+                        <p>Learn how to navigate technical questions, problem-solving exercises, and demonstrate your expertise in specialized fields.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMMON INTERVIEW QUESTIONS -->
+<section class="section" id="common-questions">
+    <div class="container">
+        <h2 class="text-center">Common Interview Questions & How to Answer</h2>
+        <p class="text-center">Prepare for these frequently asked questions with our expert advice on structuring effective responses.</p>
+        
+        <div class="content-module">
+            <div class="module-header">
+                <h3>Mastering Interview Questions</h3>
+            </div>
+            <div class="module-content">
+                <p>Click on each question to see strategies for crafting impressive answers:</p>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Tell me about yourself.
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>This is often the opening question and is your opportunity to make a strong first impression. The interviewer wants an overview of your professional background and what brings you to this role.</p>
+                                
+                                <div class="answer-strategy">
+                                    <h5>Answer Strategy:</h5>
+                                    <p>Structure your answer in three parts:</p>
+                                    <ol>
+                                        <li><strong>Present:</strong> Start with your current role and key responsibilities</li>
+                                        <li><strong>Past:</strong> Briefly mention relevant previous experience and achievements</li>
+                                        <li><strong>Future:</strong> Connect your background to why you're interested in this position</li>
+                                    </ol>
+                                    <p>Keep your answer focused on professional information relevant to the job (1-2 minutes long). Avoid oversharing personal details.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What are your greatest strengths?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Employers want to know what you excel at and how your strengths align with the position. This question assesses your self-awareness and how well you understand the job requirements.</p>
+                                
+                                <div class="answer-strategy">
+                                    <h5>Answer Strategy:</h5>
+                                    <p>Select 2-3 strengths that are:</p>
+                                    <ul>
+                                        <li>Directly relevant to the job requirements</li>
+                                        <li>Verifiable with specific examples</li>
+                                        <li>A mix of technical and soft skills</li>
+                                    </ul>
+                                    <p>For each strength, provide a brief STAR-format example (Situation, Task, Action, Result) that demonstrates how you've used this strength successfully.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What is your greatest weakness?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>This question tests your self-awareness, honesty, and commitment to professional growth. Employers want to see that you can acknowledge areas for improvement.</p>
+                                
+                                <div class="answer-strategy">
+                                    <h5>Answer Strategy:</h5>
+                                    <p>Choose a genuine but not critical weakness, and focus on:</p>
+                                    <ol>
+                                        <li><strong>Acknowledge:</strong> Identify an actual skill or trait you're working to improve</li>
+                                        <li><strong>Explain:</strong> Briefly discuss how this affects your work</li>
+                                        <li><strong>Improve:</strong> Detail specific steps you're taking to overcome this weakness</li>
+                                        <li><strong>Results:</strong> Mention progress you've already made</li>
+                                    </ol>
+                                    <p>Avoid clichés like "I'm a perfectionist" or weaknesses that are essential to the job.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Why do you want to work for this company?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>This question evaluates whether you've researched the company and how well you understand their culture, values, and industry position.</p>
+                                
+                                <div class="answer-strategy">
+                                    <h5>Answer Strategy:</h5>
+                                    <p>Demonstrate genuine interest by:</p>
+                                    <ul>
+                                        <li>Mentioning specific aspects of the company's mission or values that resonate with you</li>
+                                        <li>Referencing recent company achievements, projects, or innovations that impress you</li>
+                                        <li>Explaining how the company's work environment or culture aligns with your career goals</li>
+                                        <li>Connecting your skills and interests to the company's needs</li>
+                                    </ul>
+                                    <p>Make it clear why this specific company stands out to you compared to others in the industry.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Why should we hire you?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>This question is your opportunity to sell yourself and highlight what makes you the best candidate. The interviewer wants to understand the unique value you bring.</p>
+                                
+                                <div class="answer-strategy">
+                                    <h5>Answer Strategy:</h5>
+                                    <p>Create a compelling case by:</p>
+                                    <ol>
+                                        <li><strong>Match:</strong> Highlight how your skills and experience align perfectly with the job requirements</li>
+                                        <li><strong>Results:</strong> Share specific achievements that demonstrate your impact</li>
+                                        <li><strong>Unique:</strong> Emphasize what distinguishes you from other candidates</li>
+                                        <li><strong>Cultural:</strong> Explain why you're a good fit for the company culture</li>
+                                    </ol>
+                                    <p>Be confident but not arrogant. Focus on concrete evidence of your capabilities rather than making unsupported claims.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Can you describe a challenging work situation and how you handled it?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Behavioral questions like this assess how you've responded to difficulties in the past, which helps predict how you'll perform in future challenging situations.</p>
+                                
+                                <div class="answer-strategy">
+                                    <h5>Answer Strategy:</h5>
+                                    <p>Use the STAR method to structure your answer:</p>
+                                    <ul>
+                                        <li><strong>Situation:</strong> Briefly describe the context and specific challenge</li>
+                                        <li><strong>Task:</strong> Explain your responsibilities in addressing the challenge</li>
+                                        <li><strong>Action:</strong> Detail the specific steps you took to resolve the issue</li>
+                                        <li><strong>Result:</strong> Share the positive outcomes and what you learned</li>
+                                    </ul>
+                                    <p>Choose an example that showcases valuable skills like problem-solving, communication, leadership, or adaptability. Focus more on the solution than the problem.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Where do you see yourself in five years?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>This question evaluates your career ambitions, commitment to the role/company, and whether your goals align with what the organization can offer.</p>
+                                
+                                <div class="answer-strategy">
+                                    <h5>Answer Strategy:</h5>
+                                    <p>Balance ambition with realism by:</p>
+                                    <ul>
+                                        <li>Showing genuine interest in growing with the company long-term</li>
+                                        <li>Outlining realistic advancement goals within the company's structure</li>
+                                        <li>Emphasizing skills you hope to develop or master</li>
+                                        <li>Connecting your aspirations to the company's mission or growth</li>
+                                    </ul>
+                                    <p>Avoid responses that suggest you see the position as a short-term stepping stone or have unrealistic expectations about advancement.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What are your salary expectations?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>This question helps employers determine if your expectations align with their budget. It also tests your knowledge of industry standards and your own value.</p>
+                                
+                                <div class="answer-strategy">
+                                    <h5>Answer Strategy:</h5>
+                                    <p>Approach this question strategically:</p>
+                                    <ol>
+                                        <li><strong>Research:</strong> Before the interview, research salary ranges for similar positions in your location</li>
+                                        <li><strong>Range:</strong> Provide a reasonable range rather than a specific number</li>
+                                        <li><strong>Flexibility:</strong> Express openness to discussing compensation</li>
+                                        <li><strong>Total package:</strong> Mention that you're considering the entire benefits package</li>
+                                    </ol>
+                                    <p>If possible, try to delay detailed salary discussions until you've received an offer or have fully demonstrated your value.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Interview Prep</h4>
+                <p>Your ultimate resource for mastering job interviews and advancing your career.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#interview-tips">Preparation Tips</a></li>
+                    <li><a href="#dos-donts">Do's & Don'ts</a></li>
+                    <li><a href="#sample-interviews">Sample Interviews</a></li>
+                    <li><a href="#common-questions">Common Questions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>Email: support@interviewprep.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Interview Prep. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- JS Scripts -->
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    
+    // FAQ accordion functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Toggle active class on the clicked item
+            item.classList.toggle('active');
+            
+            // Close other items when one is opened
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

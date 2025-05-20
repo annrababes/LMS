@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Resume & Cover Letter Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --primary-dark: #3730A3;
+            --secondary: #06B6D4;
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --gray: #94A3B8;
+            --gray-light: #E2E8F0;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: #fff;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* === HEADER === */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.75rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* === HERO === */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* === CONTENT MODULES === */
+        .content-module {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .module-header {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .module-content {
+            padding: 2rem;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+            margin: 2rem 0;
+        }
+
+        .step-list li {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 3rem;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .tips-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .tips-list li {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .tips-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* === TEMPLATE SHOWCASE === */
+        .template-showcase {
+            margin: 3rem 0;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .template-card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            background-color: white;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .template-image {
+            height: 300px;
+            background-color: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .template-info {
+            padding: 1.5rem;
+        }
+
+        /* === DO'S AND DON'TS === */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table th {
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .comparison-table .do {
+            color: #10B981;
+        }
+
+        .comparison-table .dont {
+            color: #EF4444;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 1rem;
+            color: var(--gray-light);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--gray);
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--gray);
+            padding-top: 1rem;
+            color: var(--gray);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-briefcase"></i>
+                    Career Toolkit
+                </div>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#modules">Modules</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Master Your Resume & Cover Letter</h1>
+        <p>Learn professional techniques to create standout resumes and compelling cover letters that help you land your dream job.</p>
+        <div class="hero-buttons">
+            <a href="#resume-guide" class="btn btn-primary">Resume Guide</a>
+            <a href="#cover-letter-guide" class="btn btn-secondary">Cover Letter Tips</a>
+        </div>
+    </div>
+</section>
+
+<!-- RESUME GUIDE SECTION -->
+<section class="section" id="resume-guide">
+    <div class="container">
+        <h2 class="text-center">How to Create an Effective Resume</h2>
+        <p class="text-center">Follow these proven steps to craft a resume that gets noticed by hiring managers.</p>
+        
+        <div class="content-module">
+            <div class="module-header">
+                <h3>Resume Writing Guide</h3>
+            </div>
+            <div class="module-content">
+                <p>A well-crafted resume is your ticket to landing interviews. Here's a step-by-step guide to creating an effective resume:</p>
+                
+                <ul class="step-list">
+                    <li>
+                        <h4>Choose the Right Format</h4>
+                        <p>Select a format that best highlights your strengths: chronological (work history), functional (skills-focused), or combination.</p>
+                    </li>
+                    <li>
+                        <h4>Include Essential Sections</h4>
+                        <p>Ensure your resume contains contact information, professional summary, work experience, education, and skills.</p>
+                    </li>
+                    <li>
+                        <h4>Craft a Compelling Professional Summary</h4>
+                        <p>Write a brief, powerful statement (3-5 sentences) that summarizes your qualifications and value proposition.</p>
+                    </li>
+                    <li>
+                        <h4>Detail Your Work Experience</h4>
+                        <p>List relevant positions in reverse chronological order. Use action verbs and quantify achievements when possible.</p>
+                    </li>
+                    <li>
+                        <h4>Highlight Relevant Skills</h4>
+                        <p>Include both hard skills (technical abilities) and soft skills (interpersonal traits) that are relevant to the position.</p>
+                    </li>
+                    <li>
+                        <h4>Tailor to Each Job Application</h4>
+                        <p>Customize your resume for each position by emphasizing experiences and skills that match the job description.</p>
+                    </li>
+                    <li>
+                        <h4>Proofread Thoroughly</h4>
+                        <p>Eliminate spelling and grammatical errors. Ask someone else to review your resume before submitting.</p>
+                    </li>
+                </ul>
+                
+                <h4>Resume Do's and Don'ts</h4>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Do</th>
+                        <th>Don't</th>
+                    </tr>
+                    <tr>
+                        <td class="do">Keep it concise (1-2 pages)</td>
+                        <td class="dont">Include irrelevant information</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Use bullet points for readability</td>
+                        <td class="dont">Use overly complex language or jargon</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Quantify achievements (increased sales by 20%)</td>
+                        <td class="dont">Include personal information (age, marital status)</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Use keywords from the job description</td>
+                        <td class="dont">Use generic objectives or summaries</td>
+                    </tr>
+                    <tr>
+                        <td class="do">Use consistent formatting</td>
+                        <td class="dont">Include references (save for later)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COVER LETTER GUIDE -->
+<section class="section" id="cover-letter-guide">
+    <div class="container">
+        <h2 class="text-center">Tips for Creating a Cover Letter</h2>
+        <p class="text-center">Learn how to write a cover letter that complements your resume and helps you stand out.</p>
+        
+        <div class="content-module">
+            <div class="module-header">
+                <h3>Cover Letter Writing Guide</h3>
+            </div>
+            <div class="module-content">
+                <p>A well-written cover letter can significantly increase your chances of getting an interview. Here are essential tips for creating an effective cover letter:</p>
+                
+                <ul class="tips-list">
+                    <li>
+                        <h4>Address the Right Person</h4>
+                        <p>Whenever possible, address your letter to a specific person rather than using "To Whom It May Concern." Research the hiring manager's name.</p>
+                    </li>
+                    <li>
+                        <h4>Start Strong</h4>
+                        <p>Begin with a compelling opening paragraph that grabs attention and clearly states the position you're applying for.</p>
+                    </li>
+                    <li>
+                        <h4>Show How You'll Add Value</h4>
+                        <p>Explain how your skills and experience will benefit the company, not just why you want the job.</p>
+                    </li>
+                    <li>
+                        <h4>Highlight Specific Achievements</h4>
+                        <p>Include 1-2 specific examples of accomplishments that demonstrate your qualifications for the role.</p>
+                    </li>
+                    <li>
+                        <h4>Customize for Each Application</h4>
+                        <p>Tailor your cover letter to the specific job, company, and industry. Research the company and incorporate that knowledge.</p>
+                    </li>
+                    <li>
+                        <h4>Keep It Concise</h4>
+                        <p>Limit your cover letter to one page with 3-4 paragraphs. Be direct and get to the point.</p>
+                    </li>
+                    <li>
+                        <h4>End with a Call to Action</h4>
+                        <p>Conclude by expressing interest in an interview and indicating how and when you'll follow up.</p>
+                    </li>
+                </ul>
+                
+                <h4>Cover Letter Structure</h4>
+                <ol>
+                    <li><strong>Header:</strong> Your contact information and date</li>
+                    <li><strong>Greeting:</strong> Address the hiring manager by name</li>
+                    <li><strong>Opening Paragraph:</strong> State the position and how you learned about it</li>
+                    <li><strong>Body Paragraphs:</strong> Explain your qualifications and relevant achievements</li>
+                    <li><strong>Closing Paragraph:</strong> Thank the reader and include a call to action</li>
+                    <li><strong>Signature:</strong> "Sincerely" or "Regards" followed by your name</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RESUME TEMPLATES SECTION -->
+<section class="section" id="templates">
+    <div class="container">
+        <h2 class="text-center">Resume Templates</h2>
+        <p class="text-center">Browse our collection of professional resume templates to find the perfect design for your career.</p>
+        
+        <div class="template-showcase">
+            <div class="templates-grid">
+                <div class="template-card">
+                    <div class="template-image">
+                        <img src="/api/placeholder/280/300" alt="Professional Resume Template" />
+                    </div>
+                    <div class="template-info">
+                        <h4>Professional Template</h4>
+                        <p>A clean, traditional design suitable for corporate environments.</p>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-image">
+                        <img src="/api/placeholder/280/300" alt="Creative Resume Template" />
+                    </div>
+                    <div class="template-info">
+                        <h4>Creative Template</h4>
+                        <p>A modern design with unique layout for creative professionals.</p>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-image">
+                        <img src="/api/placeholder/280/300" alt="Executive Resume Template" />
+                    </div>
+                    <div class="template-info">
+                        <h4>Executive Template</h4>
+                        <p>An elegant, sophisticated design for senior positions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Career Toolkit</h4>
+                <p>Your ultimate resource for resume and cover letter guidance.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#resume-guide">Resume Guide</a></li>
+                    <li><a href="#cover-letter-guide">Cover Letter Tips</a></li>
+                    <li><a href="#templates">Templates</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>Email: support@careertoolkit.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Career Toolkit. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- JS Scripts -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+</body>
+</html>

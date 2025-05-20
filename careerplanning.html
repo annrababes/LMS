@@ -1,0 +1,2171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Resources Toolkit</title>
+    <style>
+        /* === CSS RESET === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* === COLOR VARIABLES === */
+        :root {
+            --primary: #4F46E5; /* Indigo */
+            --primary-light: #818CF8;
+            --primary-dark: #3730A3;
+            --secondary: #06B6D4; /* Cyan */
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --gray-light: #E2E8F0;
+            --gray-dark: #475569;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --shadow: rgba(0, 0, 0, 0.05);
+        }
+
+        /* === GENERAL STYLING === */
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray-dark);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+         e {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        c {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.25rem;
+            color: var(--dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* === HEADER === */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.75rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+            padding: 6rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        /* === TOOL CARDS === */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tool-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tool-card-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+        
+        .tool-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-card-description {
+            opacity: 0.9;
+            color: white;
+        }
+        
+        .tool-card-body {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        
+        .tool-card-footer {
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-top: 1px solid var(--gray-light);
+            text-align: center;
+        }
+
+        /* === WORKPLACE PREFERENCE ASSESSMENT === */
+        .assessment-section {
+            background-color: white;
+            padding: 5rem 0;
+        }
+        
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .factor-card {
+            background-color: var(--light);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+        }
+        
+        .factor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        
+        .factor-card h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        
+        .factor-card h4 i {
+            margin-right: 0.5rem;
+        }
+        
+        .factor-importance {
+            margin-top: 1rem;
+        }
+        
+        .factor-importance label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+        
+        .importance-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background-color: var(--gray-light);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .importance-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .importance-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        
+        .results-container {
+            margin-top: 3rem;
+        }
+        
+        .results-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 5px 20px var(--shadow);
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .results-card.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .results-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            color: var(--primary);
+        }
+        
+        .priority-list {
+            margin-bottom: 2rem;
+        }
+        
+        .priority-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .priority-rank {
+            width: 35px;
+            height: 35px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        
+        .priority-details {
+            flex: 1;
+        }
+        
+        .priority-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .priority-score {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .assessment-note {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 2rem;
+        }
+        
+        .assessment-note h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* === CAREER MAPPING === */
+        .mapping-section {
+            background-color: var(--light);
+            padding: 5rem 0;
+        }
+        
+        .mapping-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .mapping-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px var(--shadow);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: 0.75rem;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--light);
+            transform: rotate(45deg);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -10px;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 15px;
+            width: 120px;
+            padding: 0.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(79, 70, 229, 0.2);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: -140px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            right: -140px;
+        }
+        
+        .timeline-point {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.2);
+        }
+        
+        .timeline-title {
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        
+        .timeline-item input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .timeline-item textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .timeline-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .timeline-skill {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .timeline-skill i {
+            margin-right: 0.3rem;
+            font-size: 0.8rem;
+        }
+        
+        .add-skill-btn {
+            background-color: transparent;
+            border: 1px dashed var(--primary);
+            color: var(--primary);
+            padding: 0.3rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .add-skill-btn:hover {
+            background-color: rgba(79, 70, 229, 0.05);
+        }
+        
+        .add-skill-btn i {
+            margin-right: 0.3rem;
+        }
+        
+        .add-milestone-btn {
+            margin-top: 2rem;
+            background-color: transparent;
+            border: 2px dashed var(--primary);
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .add-milestone-btn:hover {
+            background-color: rgba(79, 70, 229, 0.05);
+        }
+        
+        .add-milestone-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .mapping-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            margin-right: 0.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-container {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--primary);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        /* Save confirmation styles */
+        .save-confirmation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            z-index: 100;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .save-confirmation.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .save-confirmation i {
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        /* Simplified Print Preview Styles */
+        .print-preview {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .print-preview-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #4F46E5;
+            padding-bottom: 1rem;
+        }
+        
+        .print-preview-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #4F46E5;
+        }
+        
+        .print-preview-subtitle {
+            font-size: 1.1rem;
+            color: #64748B;
+        }
+        
+        .print-section {
+            margin-bottom: 2rem;
+        }
+        
+        .print-section-title {
+            font-size: 1.5rem;
+            color: #3730A3;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .print-milestone {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid #4F46E5;
+        }
+        
+        .print-milestone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .print-milestone-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1E293B;
+        }
+        
+        .print-milestone-date {
+            font-size: 0.9rem;
+            color: #64748B;
+            font-weight: 500;
+            background-color: #F8FAFC;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+        }
+        
+        .print-milestone-position {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #4F46E5;
+        }
+        
+        .print-milestone-description {
+            margin-bottom: 1rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        .print-skills-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0.75rem 0 0.5rem;
+            color: #1E293B;
+        }
+        
+        .print-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .print-skill {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: #4F46E5;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            .print-preview, .print-preview * {
+                visibility: visible;
+            }
+            
+            .print-preview {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                padding: 0 1cm;
+            }
+            
+            .modal-header, .modal-footer, .print-modal-controls {
+                display: none !important;
+            }
+        }
+
+        /* Add Skill Modal Styles */
+        .skill-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .skill-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .skill-modal-container {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .skill-modal-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 1rem 1rem 0 0;
+            position: relative;
+        }
+        
+        .skill-modal-title {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .skill-modal-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        .skill-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .skill-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .skill-modal-body {
+            padding: 1.5rem;
+        }
+        
+        .skill-input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-input-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .skill-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .skill-proficiency {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-proficiency-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .skill-level-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .skill-level-option {
+            flex: 1;
+            min-width: 100px;
+        }
+        
+        .skill-level-radio {
+            display: none;
+        }
+        
+        .skill-level-button {
+            display: block;
+            padding: 0.5rem;
+            text-align: center;
+            border: 1px solid var(--gray-light);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-level-radio:checked + .skill-level-button {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .skill-modal-footer {
+            padding: 1rem 1.5rem;
+            background-color: var(--light);
+            border-top: 1px solid var(--gray-light);
+            border-radius: 0 0 1rem 1rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        .skill-modal-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-cancel-btn {
+            background-color: white;
+            color: var(--gray);
+            border: 1px solid var(--gray-light);
+        }
+        
+        .skill-cancel-btn:hover {
+            background-color: var(--gray-light);
+        }
+        
+        .skill-add-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .skill-add-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 992px) {
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -10px;
+                right: auto;
+            }
+            
+            .timeline-date {
+                position: relative;
+                top: auto;
+                left: auto !important;
+                right: auto !important;
+                width: auto;
+                margin-bottom: 1rem;
+            }
+            
+            .timeline-point {
+                left: 30px;
+            }
+            
+            .mapping-actions {
+                flex-direction: column;
+            }
+            
+            .mapping-actions button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .skill-level-options {
+                flex-direction: column;
+            }
+            
+            .skill-level-option {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .factors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skill-modal-container {
+                width: 95%;
+            }
+        }
+    </style>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Workplace Preference Assessment
+            const assessForm = document.getElementById('workplace-assessment-form');
+            const resultsCard = document.getElementById('assessment-results');
+            
+            if (assessForm) {
+                assessForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get all sliders
+                    const sliders = document.querySelectorAll('.importance-slider');
+                    const factorData = [];
+                    
+                    // Collect data from each slider
+                    sliders.forEach(slider => {
+                        const factorName = slider.dataset.factor;
+                        const factorValue = parseInt(slider.value);
+                        
+                        factorData.push({
+                            name: factorName,
+                            value: factorValue
+                        });
+                    });
+                    
+                    // Sort factors by importance (highest to lowest)
+                    factorData.sort((a, b) => b.value - a.value);
+                    
+                    // Generate results HTML
+                    const priorityList = document.getElementById('priority-list');
+                    priorityList.innerHTML = '';
+                    
+                    factorData.forEach((factor, index) => {
+                        const item = document.createElement('div');
+                        item.className = 'priority-item';
+                        
+                        item.innerHTML = `
+                            <div class="priority-rank">${index + 1}</div>
+                            <div class="priority-details">
+                                <div class="priority-name">${factor.name}</div>
+                                <div class="priority-score">Importance: ${factor.value}/10</div>
+                            </div>
+                        `;
+                        
+                        priorityList.appendChild(item);
+                    });
+                    
+                    // Show results
+                    resultsCard.classList.add('active');
+                    resultsCard.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            
+            // Skill Modal functionality
+            let currentSkillContainer = null;
+            
+            // Open skill modal when "Add Skill" button is clicked
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.add-skill-btn')) {
+                    const skillModal = document.getElementById('skill-modal');
+                    const skillInput = document.getElementById('skill-input');
+                    
+                    // Store reference to the skills container where we'll add the new skill
+                    currentSkillContainer = e.target.closest('.timeline-skills');
+                    
+                    // Show modal and focus on input
+                    skillModal.classList.add('active');
+                    skillInput.focus();
+                }
+            });
+            
+            // Close skill modal
+            const closeSkillModal = document.getElementById('skill-modal-close');
+            const cancelSkillBtn = document.getElementById('skill-cancel-btn');
+            
+            if (closeSkillModal) {
+                closeSkillModal.addEventListener('click', function() {
+                    const skillModal = document.getElementById('skill-modal');
+                    skillModal.classList.remove('active');
+                    
+                    // Clear the input
+                    document.getElementById('skill-input').value = '';
+                    
+                    // Reset the radio buttons
+                    document.querySelector('input[name="skill-level"][value="intermediate"]').checked = true;
+                });
+            }
+            
+            if (cancelSkillBtn) {
+                cancelSkillBtn.addEventListener('click', function() {
+                    const skillModal = document.getElementById('skill-modal');
+                    skillModal.classList.remove('active');
+                    
+                    // Clear the input
+                    document.getElementById('skill-input').value = '';
+                    
+                    // Reset the radio buttons
+                    document.querySelector('input[name="skill-level"][value="intermediate"]').checked = true;
+                });
+            }
+            
+            // Add skill from modal
+            const addSkillBtn = document.getElementById('skill-add-btn');
+            
+            if (addSkillBtn) {
+                addSkillBtn.addEventListener('click', function() {
+                    const skillInput = document.getElementById('skill-input');
+                    const skillLevel = document.querySelector('input[name="skill-level"]:checked').value;
+                    
+                    if (skillInput.value.trim() !== '' && currentSkillContainer) {
+                        // Create new skill element
+                        const newSkill = document.createElement('div');
+                        newSkill.className = 'timeline-skill';
+                        
+                        // Add icon based on skill level
+                        let icon;
+                        if (skillLevel === 'beginner') {
+                            icon = 'fa-seedling';
+                        } else if (skillLevel === 'intermediate') {
+                            icon = 'fa-check-circle';
+                        } else {
+                            icon = 'fa-star';
+                        }
+                        
+                        newSkill.innerHTML = `<i class="fas ${icon}"></i> ${skillInput.value.trim()}`;
+                        
+                        // Add to skills container before the "Add Skill" button
+                        const addSkillBtn = currentSkillContainer.querySelector('.add-skill-btn');
+                        currentSkillContainer.insertBefore(newSkill, addSkillBtn);
+                        
+                        // Close modal
+                        document.getElementById('skill-modal').classList.remove('active');
+                        
+                        // Clear input
+                        skillInput.value = '';
+                        
+                        // Reset radio buttons
+                        document.querySelector('input[name="skill-level"][value="intermediate"]').checked = true;
+                    }
+                });
+            }
+            
+            // Add skill by pressing Enter in the input
+            const skillInput = document.getElementById('skill-input');
+            
+            if (skillInput) {
+                skillInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        document.getElementById('skill-add-btn').click();
+                    }
+                });
+            }
+            
+            // Career Mapping - Add Career Milestone
+            const addMilestoneBtn = document.getElementById('add-milestone-btn');
+            
+            if (addMilestoneBtn) {
+                addMilestoneBtn.addEventListener('click', function() {
+                    const timeline = document.querySelector('.timeline');
+                    const timelineItems = document.querySelectorAll('.timeline-item');
+                    
+                    const newItem = document.createElement('div');
+                    newItem.className = 'timeline-item';
+                    
+                    newItem.innerHTML = `
+                        <div class="timeline-point">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-date">
+                            Career Milestone
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">New Career Milestone</h3>
+                            <input type="text" placeholder="Position/Role" class="milestone-title">
+                            <textarea placeholder="Describe this career milestone, your goals, and what you hope to achieve..."></textarea>
+                            <h4>Skills & Competencies to Develop:</h4>
+                            <div class="timeline-skills">
+                                <div class="add-skill-btn">
+                                    <i class="fas fa-plus"></i> Add Skill
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    timeline.appendChild(newItem);
+                    
+                    // Scroll to new milestone
+                    newItem.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            
+            // Function to generate a simplified print preview
+            function generateSimplePrintPreview() {
+                const previewContent = document.getElementById('print-preview-content');
+                const timeline = document.querySelector('.timeline');
+                
+                // Clear previous content
+                previewContent.innerHTML = '';
+                
+                // Create header
+                const header = document.createElement('div');
+                header.className = 'print-preview-header';
+                header.innerHTML = `
+                    <h1 class="print-preview-title">My Career Roadmap</h1>
+                    <p class="print-preview-subtitle">Created on ${new Date().toLocaleDateString()}</p>
+                `;
+                previewContent.appendChild(header);
+                
+                // Get all timeline items
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                
+                if (timelineItems.length > 0) {
+                    // Create career section
+                    const careerSection = document.createElement('div');
+                    careerSection.className = 'print-section';
+                    careerSection.innerHTML = `<h2 class="print-section-title">Career Milestones</h2>`;
+                    
+                    // Process each timeline item
+                    timelineItems.forEach((item, index) => {
+                        // Extract data from the timeline item
+                        const titleElement = item.querySelector('.timeline-title');
+                        const dateElement = item.querySelector('.timeline-date');
+                        const positionInput = item.querySelector('.milestone-title');
+                        const descriptionElement = item.querySelector('textarea');
+                        const skillElements = item.querySelectorAll('.timeline-skill');
+                        
+                        // Get the values
+                        const title = titleElement ? titleElement.textContent : 'Career Milestone';
+                        const date = dateElement ? dateElement.textContent.trim() : '';
+                        const position = positionInput && positionInput.value ? positionInput.value : 'Not specified';
+                        const description = descriptionElement && descriptionElement.value ? descriptionElement.value : '';
+                        
+                        // Get skills
+                        const skills = [];
+                        skillElements.forEach(skillEl => {
+                            const skillText = skillEl.textContent.trim();
+                            if (skillText && !skillText.includes('Add Skill')) {
+                                skills.push(skillText);
+                            }
+                        });
+                        
+                        // Create milestone element
+                        const milestone = document.createElement('div');
+                        milestone.className = 'print-milestone';
+                        
+                        milestone.innerHTML = `
+                            <div class="print-milestone-header">
+                                <h3 class="print-milestone-title">${title}</h3>
+                                <span class="print-milestone-date">${date}</span>
+                            </div>
+                            <div class="print-milestone-position">${position}</div>
+                            ${description ? `<p class="print-milestone-description">${description}</p>` : ''}
+                            ${skills.length > 0 ? `
+                                <h4 class="print-skills-title">Skills & Competencies:</h4>
+                                <div class="print-skills-list">
+                                    ${skills.map(skill => `<span class="print-skill">${skill}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                        `;
+                        
+                        careerSection.appendChild(milestone);
+                    });
+                    
+                    previewContent.appendChild(careerSection);
+                } else {
+                    // No items in timeline
+                    const emptyNotice = document.createElement('div');
+                    emptyNotice.className = 'print-section';
+                    emptyNotice.innerHTML = `
+                        <h2 class="print-section-title">Career Roadmap</h2>
+                        <p>No career milestones have been added yet. Please complete your career map to see a preview.</p>
+                    `;
+                    previewContent.appendChild(emptyNotice);
+                }
+                
+                // Add a note at the end
+                const footer = document.createElement('div');
+                footer.className = 'print-section';
+                footer.style.marginTop = '2rem';
+                footer.style.borderTop = '1px solid #E2E8F0';
+                footer.style.paddingTop = '1rem';
+                footer.style.fontSize = '0.9rem';
+                footer.style.color = '#64748B';
+                footer.innerHTML = `
+                    <p>This career roadmap is a living document that can be updated as your career goals evolve. 
+                    Use it as a guide to plan your professional development and track your progress over time.</p>
+                `;
+                previewContent.appendChild(footer);
+            }
+            
+            // Print/Export functionality
+            const printExportBtn = document.querySelector('.mapping-actions .btn-outline:nth-child(3)');
+            const printPreviewModal = document.getElementById('print-preview-modal');
+            const closePrintModal = document.getElementById('close-preview-modal');
+            const cancelPrint = document.getElementById('cancel-print');
+            const confirmPrint = document.getElementById('confirm-print');
+            
+            if (printExportBtn) {
+                printExportBtn.addEventListener('click', function() {
+                    // Generate simplified print preview
+                    generateSimplePrintPreview();
+                    
+                    // Show modal
+                    printPreviewModal.classList.add('active');
+                });
+            }
+            
+            // Close print preview modal
+            if (closePrintModal) {
+                closePrintModal.addEventListener('click', function() {
+                    printPreviewModal.classList.remove('active');
+                });
+            }
+            
+            if (cancelPrint) {
+                cancelPrint.addEventListener('click', function() {
+                    printPreviewModal.classList.remove('active');
+                });
+            }
+            
+            // Handle print action
+            if (confirmPrint) {
+                confirmPrint.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+            
+            // Save Career Map with confirmation
+            const saveMapBtn = document.getElementById('save-map-btn');
+            const saveConfirmation = document.getElementById('save-confirmation');
+            
+            if (saveMapBtn) {
+                saveMapBtn.addEventListener('click', function() {
+                    // In a real app, this would save the data to a database or localStorage
+                    
+                    // Show confirmation
+                    saveConfirmation.classList.add('active');
+                    
+                    // Hide confirmation after a few seconds
+                    setTimeout(function() {
+                        saveConfirmation.classList.remove('active');
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-briefcase"></i>
+                    Career Toolkit
+                </div>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#modules">Modules</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Add Skill Modal -->
+    <div id="skill-modal" class="skill-modal-overlay">
+        <div class="skill-modal-container">
+            <div class="skill-modal-header">
+                <h3 class="skill-modal-title">Add a New Skill</h3>
+                <p class="skill-modal-subtitle">Enter the skill or competency you want to develop</p>
+                <button class="skill-modal-close" id="skill-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="skill-modal-body">
+                <div class="skill-input-group">
+                    <label for="skill-input" class="skill-input-label">Skill Name:</label>
+                    <input type="text" id="skill-input" class="skill-input" placeholder="e.g., Data Analysis, Leadership, Project Management">
+                </div>
+                
+                <div class="skill-proficiency">
+                    <label class="skill-proficiency-label">Proficiency Level:</label>
+                    <div class="skill-level-options">
+                        <div class="skill-level-option">
+                            <input type="radio" id="skill-beginner" name="skill-level" value="beginner" class="skill-level-radio">
+                            <label for="skill-beginner" class="skill-level-button">
+                                <i class="fas fa-seedling"></i> Beginner
+                            </label>
+                        </div>
+                        <div class="skill-level-option">
+                            <input type="radio" id="skill-intermediate" name="skill-level" value="intermediate" class="skill-level-radio" checked>
+                            <label for="skill-intermediate" class="skill-level-button">
+                                <i class="fas fa-check-circle"></i> Intermediate
+                            </label>
+                        </div>
+                        <div class="skill-level-option">
+                            <input type="radio" id="skill-advanced" name="skill-level" value="advanced" class="skill-level-radio">
+                            <label for="skill-advanced" class="skill-level-button">
+                                <i class="fas fa-star"></i> Advanced
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-modal-footer">
+                <button class="skill-modal-btn skill-cancel-btn" id="skill-cancel-btn">Cancel</button>
+                <button class="skill-modal-btn skill-add-btn" id="skill-add-btn">Add Skill</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Print Preview Modal -->
+    <div id="print-preview-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Career Map Preview</h3>
+                <button class="modal-close" id="close-preview-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="print-preview-content" class="print-preview">
+                    <!-- Print preview content will be generated here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-print">Cancel</button>
+                <button class="btn btn-primary" id="confirm-print">
+                    <i class="fas fa-print"></i> Print/Export
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Save Confirmation -->
+    <div id="save-confirmation" class="save-confirmation">
+        <i class="fas fa-check-circle"></i>
+        <span>Your career map has been saved successfully! You can edit it anytime.</span>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Launch Your Career Journey</h1>
+            <p>Tools designed specifically for students and graduating students preparing for internships and entry-level employment</p>
+            <div class="hero-buttons">
+                <a href="#tools" class="btn btn-outline">Explore Career Tools</a>
+                <a href="#resources" class="btn btn-outline">Browse Resources</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tools Overview Section -->
+    <section id="tools" class="section">
+        <div class="container">
+            <h2 class="section-title">Shape Your Career Journey</h2>
+            <p class="section-subtitle">Tools and resources designed specifically for students and recent graduates preparing for internships and entry-level positions</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card card">
+                    <div class="tool-card-header">
+                        <h3 class="tool-card-title">Workplace Preference Assessment</h3>
+                        <p class="tool-card-description">Identify what matters most to you in a workplace</p>
+                    </div>
+                    <div class="tool-card-body">
+                        <p>This assessment helps you reflect on and prioritize the factors that influence your workplace satisfaction. Understanding your preferences will guide you toward internships and first jobs where you can thrive.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                            <li>Assess 10 key workplace factors</li>
+                            <li>Create a personalized priority list</li>
+                            <li>Compare potential internships and job opportunities</li>
+                        </ul>
+                    </div>
+                    <div class="tool-card-footer">
+                        <a href="#workplace" class="btn btn-primary">Start Assessment</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card card">
+                    <div class="tool-card-header">
+                        <h3 class="tool-card-title">Career Mapping Tool</h3>
+                        <p class="tool-card-description">Visualize and plan your career trajectory</p>
+                    </div>
+                    <div class="tool-card-body">
+                        <p>The Career Mapping tool helps you visualize your path from student to professional. Plot your education milestones, internship goals, first job targets, and long-term aspirations.</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                            <li>Create a timeline from education to early career</li>
+                            <li>Identify skills needed for internships and entry-level positions</li>
+                            <li>Develop a strategic plan for your post-graduation journey</li>
+                        </ul>
+                    </div>
+                    <div class="tool-card-footer">
+                        <a href="#mapping" class="btn btn-primary">Create Your Map</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Workplace Preference Assessment Section -->
+    <section id="workplace" class="assessment-section">
+        <div class="container">
+            <h2 class="section-title">Workplace Preference Assessment</h2>
+            <p class="section-subtitle">Identify what matters most to you when looking for internships and entry-level positions</p>
+            
+            <div class="assessment-container">
+                <form id="workplace-assessment-form">
+                    <div class="factors-grid">
+                        <div class="factor-card">
+                            <h4><i class="fas fa-dollar-sign"></i> Compensation</h4>
+                            <p>Salary, benefits, bonuses, and overall financial package</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Compensation">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-chart-line"></i> Growth Opportunities</h4>
+                            <p>Potential for advancement, skill development, and career progression</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Growth Opportunities">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-balance-scale"></i> Work-Life Balance</h4>
+                            <p>Flexibility, reasonable hours, and respect for personal time</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Work-Life Balance">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-users"></i> Company Culture</h4>
+                            <p>Values, environment, and overall workplace atmosphere</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Company Culture">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+                            <p>Commute time, remote options, and geographical considerations</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Location">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-tasks"></i> Job Responsibilities</h4>
+                            <p>Day-to-day tasks, challenges, and overall role satisfaction</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Job Responsibilities">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-lightbulb"></i> Innovation & Creativity</h4>
+                            <p>Opportunities to innovate, create, and implement new ideas</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Innovation & Creativity">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-hands-helping"></i> Mentorship & Support</h4>
+                            <p>Access to mentors, guidance, and professional support systems</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Mentorship & Support">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-bullseye"></i> Company Mission & Impact</h4>
+                            <p>Alignment with your values and making meaningful contributions</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Company Mission & Impact">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="factor-card">
+                            <h4><i class="fas fa-shield-alt"></i> Job Security & Stability</h4>
+                            <p>Stable employment and long-term career prospects</p>
+                            <div class="factor-importance">
+                                <label>How important is this to you?</label>
+                                <input type="range" min="1" max="10" value="5" class="importance-slider" data-factor="Job Security & Stability">
+                                <div class="slider-labels">
+                                    <span>Less Important</span>
+                                    <span>Very Important</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary">Generate My Preferences</button>
+                    </div>
+                </form>
+                
+                <div class="results-container">
+                    <div id="assessment-results" class="results-card">
+                        <h3 class="results-title">Your Workplace Preferences</h3>
+                        
+                        <p>Based on your assessment, here are your workplace factors ranked by importance:</p>
+                        
+                        <div id="priority-list" class="priority-list">
+                            <!-- Priorities will be inserted here by JavaScript -->
+                        </div>
+                        
+                        <div class="assessment-note">
+                            <h4>How to Use These Results</h4>
+                            <p><e>When evaluating internships and entry-level positions, compare them against your top priorities. Look for opportunities that align with what matters most to you. While searching for your first professional experience, these preferences can help you identify organizations that match your values and goals.</e></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Career Mapping Section -->
+    <section id="mapping" class="mapping-section">
+        <div class="container">
+            <h2 class="section-title">Career Mapping Tool</h2>
+            <p class="section-subtitle">Create a visual roadmap from your current academic status to your desired professional path</p>
+            
+            <div class="mapping-container">
+                <div class="mapping-card">
+                    <div class="load-map-container">
+                        <button id="load-map-btn" class="load-map-btn">
+                    </div>
+                
+                    <h3>Your Career Roadmap</h3>
+                    <c>Map out your professional journey from student to professional. Create a timeline of education milestones, internships, first job, and career growth opportunities.</c>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-point">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="timeline-date">
+                                Current
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Current Academic Status</h3>
+                                <input type="text" placeholder="Current Program/Year (e.g., 3rd Year Computer Science)" class="milestone-title">
+                                <textarea placeholder="Describe your current academic focus, relevant coursework, and achievements..."></textarea>
+                                <h4>Current Skills & Competencies:</h4>
+                                <div class="timeline-skills">
+                                    <div class="timeline-skill">
+                                        <i class="fas fa-check-circle"></i> Academic Knowledge
+                                    </div>
+                                    <div class="timeline-skill">
+                                        <i class="fas fa-check-circle"></i> Research Skills
+                                    </div>
+                                    <div class="add-skill-btn">
+                                        <i class="fas fa-plus"></i> Add Skill
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-point">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="timeline-date">
+                                0-6 Months
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Internship/First Job Goal</h3>
+                                <input type="text" placeholder="Target Internship/Entry-level Position" class="milestone-title">
+                                <textarea placeholder="Describe your ideal internship or first job, what you hope to learn, and the type of organization you'd like to work with..."></textarea>
+                                <h4>Skills & Competencies to Develop:</h4>
+                                <div class="timeline-skills">
+                                    <div class="timeline-skill">
+                                        <i class="fas fa-check-circle"></i> Workplace Etiquette
+                                    </div>
+                                    <div class="timeline-skill">
+                                        <i class="fas fa-check-circle"></i> Time Management
+                                    </div>
+                                    <div class="add-skill-btn">
+                                        <i class="fas fa-plus"></i> Add Skill
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-point">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <div class="timeline-date">
+                                1-2 Years
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Early Career Development</h3>
+                                <input type="text" placeholder="Target Role After Initial Experience" class="milestone-title">
+                                <textarea placeholder="Describe your goals after gaining initial experience, what responsibilities you'd like to take on, and how you plan to grow..."></textarea>
+                                <h4>Skills & Competencies to Develop:</h4>
+                                <div class="timeline-skills">
+                                    <div class="timeline-skill">
+                                        <i class="fas fa-check-circle"></i> Technical Proficiency
+                                    </div>
+                                    <div class="timeline-skill">
+                                        <i class="fas fa-check-circle"></i> Professional Communication
+                                    </div>
+                                    <div class="add-skill-btn">
+                                        <i class="fas fa-plus"></i> Add Skill
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-point">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <div class="timeline-date">
+                                3-5 Years
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Career Advancement</h3>
+                                <input type="text" placeholder="Target Position" class="milestone-title">
+                                <textarea placeholder="Describe your medium-term career goals, areas of specialization you might pursue, and potential leadership opportunities..."></textarea>
+                                <h4>Skills & Competencies to Develop:</h4>
+                                <div class="timeline-skills">
+                                    <div class="timeline-skill">
+                                        <i class="fas fa-check-circle"></i> Project Management
+                                    </div>
+                                    <div class="timeline-skill">
+                                        <i class="fas fa-check-circle"></i> Leadership
+                                    </div>
+                                    <div class="add-skill-btn">
+                                        <i class="fas fa-plus"></i> Add Skill
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mapping-actions">
+                        <button id="add-milestone-btn" class="btn btn-outline" style="display: flex; align-items: center;">
+                            <i class="fas fa-plus-circle" style="margin-right: 0.5rem;"></i> Add Career Milestone
+                        </button>
+                        <button id="save-map-btn" class="btn btn-primary">
+                            Save My Career Map
+                        </button>
+                        <button class="btn btn-outline">
+                            Print/Export
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resources Section -->
+    <section id="resources" class="section">
+        <div class="container">
+            <h2 class="section-title">Career Resources</h2>
+            <p class="section-subtitle">Helpful resources to support your career development journey</p>
+            
+            <div class="tools-grid">
+                <div class="card" style="padding: 1.5rem;">
+                    <h3 style="color: var(--primary);">Student Resources</h3>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Internship Application Guide</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">From Student to Professional: Transition Guide</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Making the Most of Campus Career Services</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Student-to-Professional Networking Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="card" style="padding: 1.5rem;">
+                    <h3 style="color: var(--primary);">Student Skill Development</h3>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Essential Skills for New Graduates</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Bridging Academic and Workplace Skills</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Industry Certification Guide for Students</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Building Your Portfolio as a Student</a></li>
+                    </ul>
+                </div>
+                
+                <div class="card" style="padding: 1.5rem;">
+                    <h3 style="color: var(--primary);">Entry-Level Job Search</h3>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Resume Templates for Students & Recent Graduates</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">First Interview Success Guide</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Entry-Level Salary Expectations by Field</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#">Internship-to-Job Conversion Strategies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fas fa-briefcase"></i> Career Toolkit
+                    </div>
+                    <p>Supporting students and graduates in their journey to career success.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#tools">Career Tools</a></li>
+                        <li><a href="#workplace">Workplace Assessment</a></li>
+                        <li><a href="#mapping">Career Mapping</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Career Center, Student Building</li>
+                        <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope"></i> careers@university.edu</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Career Toolkit. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
