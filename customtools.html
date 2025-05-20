@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customized Tools - Career Resources Toolkit</title>
+    <title>Career Toolkit for Interns & Fresh Graduates</title>
     <style>
         /* === CSS RESET === */
         * {
@@ -27,6 +27,7 @@
             --warning: #F59E0B;
             --danger: #EF4444;
             --purple: #8B5CF6;
+            --teal: #14B8A6;
         }
 
         /* === GENERAL STYLING === */
@@ -145,7 +146,7 @@
 
         /* === MODULE CONTENT === */
         .module-header {
-            background-color: var(--purple);
+            background-color: var(--teal);
             color: white;
             padding: 4rem 0;
             text-align: center;
@@ -188,6 +189,242 @@
 
         .back-button i {
             margin-right: 0.5rem;
+        }
+
+        /* === COLLAPSIBLE SECTIONS === */
+        .collapsible {
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .collapsible-header {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible-header h4 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .collapsible-content {
+            background-color: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .collapsible.active .collapsible-content {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+
+        .rotate-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible.active .rotate-icon {
+            transform: rotate(180deg);
+        }
+
+        /* === TABS === */
+        .tabs-container {
+            margin: 2rem 0;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--gray-light);
+        }
+
+        .tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* === FEATURE BLOCKS === */
+        .feature-blocks {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-block {
+            display: flex;
+            gap: 1.5rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-content h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* === PROGRESS TRACKER === */
+        .progress-tracker {
+            margin: 2rem 0;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--gray-light);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-step.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .progress-step.completed {
+            background-color: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .progress-content {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* === RESOURCE DOWNLOADS === */
+        .resource-downloads {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .resource-item {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .resource-title {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .resource-description {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        /* === INPUT FORM === */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray);
+            border-radius: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary-light);
         }
 
         /* === FOOTER === */
@@ -278,6 +515,18 @@
             .module-content {
                 padding: 1.5rem;
             }
+            
+            .feature-blocks {
+                grid-template-columns: 1fr;
+            }
+            
+            .resource-downloads {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-steps {
+                display: none;
+            }
         }
     </style>
     <!-- FontAwesome for icons -->
@@ -308,8 +557,8 @@
     <!-- Module Header -->
     <section class="module-header">
         <div class="container">
-            <h1>Customized Tools</h1>
-            <p>Build your professional brand with specialized tools for career advancement.</p>
+            <h1>Career Toolkit for Interns & Fresh Graduates</h1>
+            <p>All the essential resources you need to launch your career journey in the Philippines</p>
         </div>
     </section>
 
@@ -321,42 +570,458 @@
             </a>
             
             <div class="module-content">
-                <h3>Career Portfolio Builder</h3>
-                <p>Create a professional showcase of your skills and achievements:</p>
-                <ul>
-                    <li>Digital portfolio templates by industry</li>
-                    <li>Project showcase frameworks</li>
-                    <li>Content curation guidelines</li>
-                    <li>Portfolio growth strategy</li>
-                </ul>
+                <h3>Career Preparation Toolkit</h3>
                 
-                <h3>CV Creation Guide</h3>
-                <p>Develop comprehensive documentation of your academic and professional journey:</p>
-                <ul>
-                    <li>CV vs. Resume comparison</li>
-                    <li>Academic and research emphasis templates</li>
-                    <li>International CV formats</li>
-                    <li>Specialized section guides (publications, presentations, etc.)</li>
-                </ul>
-                
-                <h3>Feedback Tools</h3>
-                <p>Provide feedback on our toolkit to help us improve:</p>
-                <ul>
-                    <li>Resource effectiveness evaluations</li>
-                    <li>Feature request submission</li>
-                    <li>Content relevance ratings</li>
-                </ul>
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <div class="tab active" onclick="openTab('portfolio')">Portfolio Builder</div>
+                        <div class="tab" onclick="openTab('cv')">CV Creation</div>
+                        <div class="tab" onclick="openTab('interview')">Interview Prep</div>
+                        <div class="tab" onclick="openTab('network')">Networking</div>
+                    </div>
+                    
+                    <!-- Portfolio Builder Tab -->
+                    <div id="portfolio" class="tab-content active">
+                        <h4>Building Your Professional Portfolio</h4>
+                        <p>Even with limited work experience, you can create an impressive portfolio that showcases your potential to employers.</p>
+                        
+                        <div class="progress-tracker">
+                            <div class="progress-steps">
+                                <div class="progress-step completed">1</div>
+                                <div class="progress-step active">2</div>
+                                <div class="progress-step">3</div>
+                                <div class="progress-step">4</div>
+                            </div>
+                            <div class="progress-content">
+                                <h4>Step 2: Inventory Your Experience</h4>
+                                <p>Document all relevant experiences, including:</p>
+                                <form id="experience-form">
+                                    <div class="form-group">
+                                        <label for="academic-projects">Academic Projects:</label>
+                                        <textarea id="academic-projects" class="form-control" rows="3" placeholder="List significant course projects, research papers, etc."></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="internships">Internships & OJT Experience:</label>
+                                        <textarea id="internships" class="form-control" rows="3" placeholder="List internships, including company names, roles, and major responsibilities"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="org-experience">Organizational Experience:</label>
+                                        <textarea id="org-experience" class="form-control" rows="3" placeholder="List leadership roles in school organizations, volunteer work, etc."></textarea>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="savePortfolioExperience()">Save & Continue</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-downloads">
+                            <div class="resource-item">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-download"></i>
+                                </div>
+                                <h5 class="resource-title">Portfolio Template - IT/CS</h5>
+                                <p class="resource-description">Perfect for programming, web development, and tech roles</p>
+                                <a href="#" class="btn btn-primary" onclick="downloadTemplate('it-portfolio-template')">Download</a>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-download"></i>
+                                </div>
+                                <h5 class="resource-title">Portfolio Template - Business</h5>
+                                <p class="resource-description">Suited for business, finance, and administration roles</p>
+                                <a href="#" class="btn btn-primary" onclick="downloadTemplate('business-portfolio-template')">Download</a>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-download"></i>
+                                </div>
+                                <h5 class="resource-title">Portfolio Template - Creative</h5>
+                                <p class="resource-description">Designed for design, media, and arts-related fields</p>
+                                <a href="#" class="btn btn-primary" onclick="downloadTemplate('creative-portfolio-template')">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CV Creation Tab -->
+                    <div id="cv" class="tab-content">
+                        <h4>CV & Resume Creation Guide</h4>
+                        <p>Learn how to create effective CVs and resumes specifically designed for the Philippine job market.</p>
+                        
+                        <div class="feature-blocks">
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-list-check"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>CV Content Checklist</h4>
+                                    <p>Essential elements to include in your CV:</p>
+                                    <ul>
+                                        <li>Contact information with professional email</li>
+                                        <li>Educational background with relevant coursework</li>
+                                        <li>Skills section highlighting technical and soft skills</li>
+                                        <li>Internship and OJT experience</li>
+                                        <li>Extracurricular activities and leadership roles</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>ATS-Friendly Formatting</h4>
+                                    <p>Format your CV to pass applicant tracking systems:</p>
+                                    <ul>
+                                        <li>Use standard section headings</li>
+                                        <li>Incorporate keywords from job descriptions</li>
+                                        <li>Use simple, readable fonts</li>
+                                        <li>Save as PDF unless otherwise specified</li>
+                                        <li>Avoid complex formatting and graphics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Philippine Context Tips</h4>
+                                    <p>Localized advice for the Philippine job market:</p>
+                                    <ul>
+                                        <li>Include your photo (ID-style) in the upper right</li>
+                                        <li>List character references when appropriate</li>
+                                        <li>Mention language proficiencies (Filipino, English, etc.)</li>
+                                        <li>Include relevant seminars and trainings</li>
+                                        <li>Mention willingness to work flexible hours if applicable</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Achievement Statements</h4>
+                                    <p>How to write impressive achievements with limited experience:</p>
+                                    <ul>
+                                        <li>Use action verbs (developed, created, managed)</li>
+                                        <li>Add metrics where possible (improved by 25%, managed team of 5)</li>
+                                        <li>Focus on outcomes, not just responsibilities</li>
+                                        <li>Highlight academic achievements when work experience is limited</li>
+                                        <li>Quantify volunteer and extracurricular accomplishments</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible">
+                            <div class="collapsible-header">
+                                <h4><i class="fas fa-tools"></i> CV Builder Tool</h4>
+                                <i class="fas fa-chevron-down rotate-icon"></i>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>Create your customized CV with our step-by-step builder:</p>
+                                <form id="cv-builder-form">
+                                    <div class="form-group">
+                                        <label for="full-name">Full Name:</label>
+                                        <input type="text" id="full-name" class="form-control" placeholder="Juan Dela Cruz">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email Address:</label>
+                                        <input type="email" id="email" class="form-control" placeholder="juan.delacruz@email.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Contact Number:</label>
+                                        <input type="tel" id="phone" class="form-control" placeholder="+63 915 123 4567">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cv-template">Select CV Template:</label>
+                                        <select id="cv-template" class="form-control">
+                                            <option value="standard">Standard CV</option>
+                                            <option value="modern">Modern CV</option>
+                                            <option value="creative">Creative CV</option>
+                                            <option value="minimalist">Minimalist CV</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="continueToEducation()">Continue to Education</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Interview Prep Tab -->
+                    <div id="interview" class="tab-content">
+                        <h4>Interview Preparation</h4>
+                        <p>Prepare for internship and entry-level interviews with our comprehensive resources.</p>
+                        
+                        <div class="collapsible">
+                            <div class="collapsible-header">
+                                <h4><i class="fas fa-question-circle"></i> Common Interview Questions</h4>
+                                <i class="fas fa-chevron-down rotate-icon"></i>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>Practice your answers to these frequently asked questions for fresh graduates in the Philippines:</p>
+                                <ol>
+                                    <li><strong>Tell me about yourself.</strong><br>
+                                    Focus on your education, relevant experiences, and career aspirations.</li>
+                                    <li><strong>Why did you choose your course/degree?</strong><br>
+                                    Explain your passion and interests that led to your educational choices.</li>
+                                    <li><strong>What are your strengths and weaknesses?</strong><br>
+                                    Highlight strengths relevant to the role and mention weaknesses you're actively working to improve.</li>
+                                    <li><strong>Why do you want to work for our company?</strong><br>
+                                    Research the company thoroughly and connect your goals with their mission and values.</li>
+                                    <li><strong>Where do you see yourself in 5 years?</strong><br>
+                                    Outline realistic career progression within the company or industry.</li>
+                                    <li><strong>How do you handle pressure and stress?</strong><br>
+                                    Share specific examples from school projects or internships.</li>
+                                    <li><strong>How would you contribute to our company?</strong><br>
+                                    Connect your skills and experiences to their specific needs.</li>
+                                    <li><strong>How do you work in a team?</strong><br>
+                                    Provide examples from group projects or extracurricular activities.</li>
+                                    <li><strong>What is your expected salary?</strong><br>
+                                    Research industry standards for entry-level positions in your field.</li>
+                                    <li><strong>Do you have any questions for us?</strong><br>
+                                    Always prepare thoughtful questions about the role, company culture, or growth opportunities.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible">
+                            <div class="collapsible-header">
+                                <h4><i class="fas fa-video"></i> Virtual Interview Simulator</h4>
+                                <i class="fas fa-chevron-down rotate-icon"></i>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>Practice your interview skills with our virtual interview simulator:</p>
+                                <div class="form-group">
+                                    <label for="interview-type">Select Interview Type:</label>
+                                    <select id="interview-type" class="form-control">
+                                        <option value="behavioral">Behavioral Interview</option>
+                                        <option value="hr">HR Interview</option>
+                                        <option value="technical">Technical Interview</option>
+                                        <option value="panel">Panel Interview</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="industry-focus">Industry Focus:</label>
+                                    <select id="industry-focus" class="form-control">
+                                        <option value="it">IT & Technology</option>
+                                        <option value="business">Business & Finance</option>
+                                        <option value="engineering">Engineering</option>
+                                        <option value="healthcare">Healthcare</option>
+                                        <option value="education">Education</option>
+                                        <option value="hospitality">Hospitality & Tourism</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="difficulty">Difficulty Level:</label>
+                                    <select id="difficulty" class="form-control">
+                                        <option value="beginner">Beginner (First Interviews)</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="startInterviewSimulation()">Start Practice Interview</button>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-blocks">
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Online Interview Tips</h4>
+                                    <p>Practical advice for virtual interviews:</p>
+                                    <ul>
+                                        <li>Test your technology beforehand (camera, microphone, internet)</li>
+                                        <li>Choose a quiet, well-lit location with a professional background</li>
+                                        <li>Dress professionally from head to toe</li>
+                                        <li>Have your resume and notes nearby but don't constantly look at them</li>
+                                        <li>Maintain eye contact by looking at the camera</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Interview Day Checklist</h4>
+                                    <p>Items to prepare before your interview:</p>
+                                    <ul>
+                                        <li>Multiple copies of your resume</li>
+                                        <li>Portfolio or work samples (if applicable)</li>
+                                        <li>List of references with contact information</li>
+                                        <li>Notebook and pen for taking notes</li>
+                                        <li>Questions prepared for the interviewer</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Networking Tab -->
+                    <div id="network" class="tab-content">
+                        <h4>Networking for Beginners</h4>
+                        <p>Build your professional connections from scratch with these practical networking strategies.</p>
+                        
+                        <div class="feature-blocks">
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Alumni Connections</h4>
+                                    <p>How to leverage your school's alumni network:</p>
+                                    <ul>
+                                        <li>Join your university's alumni association</li>
+                                        <li>Attend alumni networking events (virtual or in-person)</li>
+                                        <li>Connect with alumni on LinkedIn working in your target industry</li>
+                                        <li>Request informational interviews with alumni in relevant roles</li>
+                                        <li>Participate in alumni mentorship programs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>LinkedIn Optimization</h4>
+                                    <p>Enhance your LinkedIn profile for Filipino recruiters:</p>
+                                    <ul>
+                                        <li>Use a professional headshot (not a selfie)</li>
+                                        <li>Create a compelling headline that includes your degree and career focus</li>
+                                        <li>Highlight internships, academic achievements, and extracurriculars</li>
+                                        <li>Join industry-specific groups related to the Philippine job market</li>
+                                        <li>Connect with recruiters from companies you're interested in</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Informational Interviews</h4>
+                                    <p>How to request and conduct informational interviews:</p>
+                                    <ul>
+                                        <li>Research professionals in your target role/industry</li>
+                                        <li>Craft a polite, specific request explaining why you'd like to connect</li>
+                                        <li>Prepare thoughtful questions about their career path and industry</li>
+                                        <li>Keep the meeting brief (15-30 minutes) and respect their time</li>
+                                        <li>Send a thank-you note afterward and maintain the relationship</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feature-block">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Industry Groups</h4>
+                                    <p>Professional associations for Filipino students and graduates:</p>
+                                    <ul>
+                                        <li>Philippine Society of IT Professionals (PSITE)</li>
+                                        <li>Philippine Marketing Association (PMA)</li>
+                                        <li>Financial Executives Institute of the Philippines (FINEX)</li>
+                                        <li>Philippine Institute of Civil Engineers (PICE)</li>
+                                        <li>Junior Chamber International (JCI) Philippines</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible">
+                            <div class="collapsible-header">
+                                <h4><i class="fas fa-envelope"></i> Networking Message Templates</h4>
+                                <i class="fas fa-chevron-down rotate-icon"></i>
+                            </div>
+                            <div class="collapsible-content">
+                                <h5>LinkedIn Connection Request</h5>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="4" readonly>
+Hello [Name],
 
-                <h3>Professional Branding Tools</h3>
-                <p>Create a consistent and compelling professional image:</p>
-                <ul>
-                    <li>Personal brand statement generator</li>
-                    <li>Social media profile optimization</li>
-                    <li>Professional photography guidelines</li>
-                    <li>Digital presence audit checklist</li>
-                </ul>
+I'm a recent [Your Degree] graduate from [Your University]. I came across your profile while researching careers in [Industry/Field] and was impressed by your experience at [Their Company]. I'm hoping to pursue a similar path and would appreciate connecting to learn from your insights.
+
+Thank you for considering my request.
+
+[Your Name]</textarea>
+                                </div>
+                                
+                                <h5>Informational Interview Request</h5>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="6" readonly>
+Dear [Name],
+
+I hope this message finds you well. My name is [Your Name], a recent [Your Degree] graduate from [Your University].
+
+I'm reaching out because I admire your career path in [Industry/Field] and would value the opportunity to learn from your experience. Would you be willing to spare 15-20 minutes for a virtual coffee chat at your convenience? I'm particularly interested in discussing [specific aspects of their career/industry].
+
+I understand you're busy, and I appreciate any time you might be able to share.
+
+Thank you for considering my request.
+
+Best regards,
+[Your Name]
+[Your Contact Information]</textarea>
+                                </div>
+                                
+                                <h5>Thank You After Networking Meeting</h5>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="5" readonly>
+Dear [Name],
+
+Thank you so much for taking the time to speak with me today. I truly appreciate your insights about [specific topics discussed] and found your advice on [particular piece of advice] especially valuable.
+
+I'll definitely follow up on your suggestion to [action item they recommended]. I'm also looking forward to connecting with [referral they offered, if applicable].
+
+Thank you again for your generosity and guidance.
+
+Best regards,
+[Your Name]</textarea>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary" onclick="copyTemplate(this)">Copy Selected Template</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <a href="#" class="btn btn-primary">Build Your Portfolio</a>
+                <h3>Additional Resources for Philippine Job Seekers</h3>
+                
+                <div class="resource-downloads">
+                    <div class="resource-item">
+                        <div class="resource-icon">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <h5 class="resource-title">Application Tracking Spreadsheet</h5>
+                        <p class="resource-description">Excel template to manage your job applications and follow-ups</p>
+                        <a href="#" class="btn btn-primary" onclick="downloadResource('application-tracker')">Download</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h5 class="resource-title">Philippine Salary Guide</h5>
+                        <p class="resource-description">Entry-level salary ranges for different industries in the Philippines</p>
+                        <a href="#" class="btn btn-primary" onclick="downloadResource('salary-guide')">Download</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-icon">
+                            <i class="fas fa-file-powerpoint"></i>
+                        </div>
+                        <h5 class="resource-title">Company Research Template</h5>
+                        <p class="resource-description">PowerPoint template for organizing company research</p>
+                        <a href="#" class="btn btn-primary" onclick="downloadResource('company-research')">Download</a>
+                    </div>
+                </div>
+                
+                <p class="text-center">Need personalized guidance? Schedule a one-on-one coaching session with our career advisors.</p>
+                <div class="text-center" style="margin-top: 1rem;">
+                    <a href="#" class="btn btn-primary" onclick="openScheduler()">Schedule Coaching Session</a>
+                </div>
             </div>
         </div>
     </section>
@@ -413,7 +1078,116 @@
             menuToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
             });
+            
+            // Set up collapsibles
+            const collapsibles = document.querySelectorAll('.collapsible-header');
+            collapsibles.forEach(collapsible => {
+                collapsible.addEventListener('click', function() {
+                    this.parentElement.classList.toggle('active');
+                });
+            });
         });
+        
+        // Tab Functionality
+        function openTab(tabName) {
+            // Hide all tab content
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show the specific tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add the active class to the clicked tab
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Portfolio Experience Form
+        function savePortfolioExperience() {
+            const academicProjects = document.getElementById('academic-projects').value;
+            const internships = document.getElementById('internships').value;
+            const orgExperience = document.getElementById('org-experience').value;
+            
+            if (academicProjects.trim() === '' || internships.trim() === '' || orgExperience.trim() === '') {
+                alert('Please fill in all fields to continue.');
+                return;
+            }
+            
+            // In a real application, this would save data to user's account
+            localStorage.setItem('academicProjects', academicProjects);
+            localStorage.setItem('internships', internships);
+            localStorage.setItem('orgExperience', orgExperience);
+            
+            alert('Experience information saved! You can now proceed to the next step.');
+            // Here you would typically advance to the next step in the portfolio building process
+        }
+        
+        // Template Downloads
+        function downloadTemplate(templateType) {
+            // In a real application, this would initiate a download of the actual template
+            alert(`Downloading ${templateType}... This would download the template in a real application.`);
+        }
+        
+        // CV Builder
+        function continueToEducation() {
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (fullName.trim() === '' || email.trim() === '' || phone.trim() === '') {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            alert('Personal information saved! In a real application, you would now proceed to the Education section.');
+            // Here you would typically show the next section of the CV builder
+        }
+        
+        // Interview Simulator
+        function startInterviewSimulation() {
+            const interviewType = document.getElementById('interview-type').value;
+            const industryFocus = document.getElementById('industry-focus').value;
+            const difficulty = document.getElementById('difficulty').value;
+            
+            alert(`Starting a ${difficulty} ${interviewType} interview focused on the ${industryFocus} industry. In a real application, this would launch the simulation.`);
+            // Here you would typically load the interview simulation interface
+        }
+        
+        // Copy Message Template
+        function copyTemplate(button) {
+            const textareas = button.parentElement.querySelectorAll('textarea');
+            let selectedTemplate = '';
+            
+            textareas.forEach(textarea => {
+                if (textarea.parentElement.offsetParent !== null) {
+                    selectedTemplate = textarea.value;
+                }
+            });
+            
+            if (selectedTemplate) {
+                navigator.clipboard.writeText(selectedTemplate).then(() => {
+                    alert('Template copied to clipboard!');
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    alert('Failed to copy template. Please try again or copy manually.');
+                });
+            }
+        }
+        
+        // Resource Downloads
+        function downloadResource(resourceType) {
+            // In a real application, this would initiate a download of the actual resource
+            alert(`Downloading ${resourceType}... This would download the resource in a real application.`);
+        }
+        
+        // Coaching Session Scheduler
+        function openScheduler() {
+            alert('Opening the scheduling system. In a real application, this would open a calendar to book a coaching session.');
+            // Here you would typically open a scheduling interface or redirect to a booking page
+        }
     </script>
 </body>
 </html>

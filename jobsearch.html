@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job & Internship Search Strategy - Career Resources Toolkit</title>
+    <title>Finding Jobs in the Philippines - Intern & Graduate Guide</title>
     <style>
         /* === CSS RESET === */
         * {
@@ -19,13 +19,23 @@
             --primary-light: #818CF8;
             --primary-dark: #3730A3;
             --secondary: #06B6D4; /* Cyan */
+            --secondary-light: #67E8F9;
             --dark: #1E293B;
             --light: #F8FAFC;
             --gray: #94A3B8;
             --gray-light: #E2E8F0;
             --success: #10B981;
+            --success-light: #6EE7B7;
             --warning: #F59E0B;
+            --warning-light: #FCD34D;
             --danger: #EF4444;
+            --danger-light: #FCA5A5;
+            --purple: #9333EA;
+            --purple-light: #C084FC;
+            --teal: #0D9488;
+            --teal-light: #5EEAD4;
+            --orange: #EA580C;
+            --orange-light: #FB923C;
         }
 
         /* === GENERAL STYLING === */
@@ -144,10 +154,11 @@
 
         /* === MODULE CONTENT === */
         .module-header {
-            background-color: var(--danger);
+            background-color: var(--primary);
             color: white;
             padding: 4rem 0;
             text-align: center;
+            background-image: linear-gradient(135deg, var(--primary), var(--primary-dark));
         }
 
         .module-content {
@@ -249,6 +260,430 @@
             color: var(--gray);
         }
 
+        /* Hexagon Job Portals */
+        .portal-hexagon {
+            margin: 2rem 0;
+        }
+        
+        .hexagon-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 980px;
+        }
+        
+        .hexagon {
+            position: relative;
+            width: 200px;
+            height: 220px;
+            margin: 25px 10px;
+            background-color: white;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .hexagon:hover {
+            transform: translateY(-10px);
+            cursor: pointer;
+        }
+        
+        .hexagon-content {
+            width: 85%;
+            height: 85%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hexagon i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hexagon h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .hex-link {
+            font-weight: bold;
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .hex-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Hexagon Color Themes */
+        .jobstreet {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .indeed {
+            background: linear-gradient(135deg, var(--secondary), var(--teal));
+            color: white;
+        }
+        
+        .linkedin {
+            background: linear-gradient(135deg, #0077B5, #006699);
+            color: white;
+        }
+        
+        .kalibrr {
+            background: linear-gradient(135deg, var(--warning), var(--orange));
+            color: white;
+        }
+        
+        .bossjob {
+            background: linear-gradient(135deg, var(--success), var(--teal));
+            color: white;
+        }
+        
+        .mynimo {
+            background: linear-gradient(135deg, var(--purple), var(--primary-dark));
+            color: white;
+        }
+        
+        .onlinejobs {
+            background: linear-gradient(135deg, var(--danger), var(--orange));
+            color: white;
+        }
+        
+        .bestjobs {
+            background: linear-gradient(135deg, var(--teal), var(--secondary));
+            color: white;
+        }
+        
+        .hexagon i, .hexagon h4, .hexagon a {
+            color: white;
+        }
+
+        /* Feature Boxes */
+        .feature-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-box {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-icon {
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .feature-content {
+            padding: 2rem;
+        }
+        
+        .feature-content h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-content ul {
+            list-style-type: none;
+        }
+        
+        .feature-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-content li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* Feature Box Colors */
+        .target .feature-icon {
+            background-color: var(--primary);
+        }
+        
+        .timing .feature-icon {
+            background-color: var(--warning);
+        }
+        
+        .culture .feature-icon {
+            background-color: var(--purple);
+        }
+
+        /* Industry Grid */
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .industry-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .industry-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .industry-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+        
+        .it::before {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        .business::before {
+            background: linear-gradient(90deg, var(--warning), var(--orange));
+        }
+        
+        .hospitality::before {
+            background: linear-gradient(90deg, var(--teal), var(--success));
+        }
+        
+        .creative::before {
+            background: linear-gradient(90deg, var(--purple), var(--primary));
+        }
+        
+        .healthcare::before {
+            background: linear-gradient(90deg, var(--danger), var(--danger-light));
+        }
+        
+        .education::before {
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+        }
+        
+        .industry-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .it .industry-icon {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+        }
+        
+        .business .industry-icon {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+        
+        .hospitality .industry-icon {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+        
+        .creative .industry-icon {
+            background-color: rgba(147, 51, 234, 0.1);
+            color: var(--purple);
+        }
+        
+        .healthcare .industry-icon {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+        
+        .education .industry-icon {
+            background-color: rgba(6, 182, 212, 0.1);
+            color: var(--secondary);
+        }
+        
+        .industry-icon i {
+            font-size: 2rem;
+        }
+        
+        .industry-box h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .industry-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .industry-tag {
+            background-color: var(--gray-light);
+            color: var(--dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .industry-list {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: left;
+            width: 100%;
+        }
+        
+        .industry-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .it .industry-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+        
+        .business .industry-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--warning);
+        }
+        
+        .hospitality .industry-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--success);
+        }
+        
+        .creative .industry-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--purple);
+        }
+        
+        .healthcare .industry-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--danger);
+        }
+        
+        .education .industry-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
         /* === RESPONSIVE DESIGN === */
         @media (max-width: 768px) {
             .menu-toggle {
@@ -276,6 +711,33 @@
 
             .module-content {
                 padding: 1.5rem;
+            }
+            
+            .hexagon {
+                width: 150px;
+                height: 165px;
+                margin: 15px 5px;
+            }
+            
+            .hexagon i {
+                font-size: 2rem;
+            }
+            
+            .hexagon h4 {
+                font-size: 1rem;
+            }
+            
+            .feature-box {
+                min-width: 100%;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-large {
+                text-align: center;
+                justify-content: center;
             }
         }
     </style>
@@ -307,8 +769,8 @@
     <!-- Module Header -->
     <section class="module-header">
         <div class="container">
-            <h1>Job & Internship Search Strategy</h1>
-            <p>Find opportunities that align with your career goals and preferences.</p>
+            <h1>Finding Jobs in the Philippines</h1>
+            <p>A comprehensive guide for interns and fresh graduates to launch their careers</p>
         </div>
     </section>
 
@@ -320,43 +782,236 @@
             </a>
             
             <div class="module-content">
-                <h3>Job Search API</h3>
-                <p>Our integrated job search tool allows you to filter opportunities by:</p>
-                <ul>
-                    <li>Position type and industry</li>
-                    <li>Location and remote work options</li>
-                    <li>Work schedule flexibility</li>
-                    <li>Compensation range</li>
-                    <li>Company size and culture</li>
-                </ul>
+                <h3>Top Job Portals in the Philippines</h3>
+                <p>These online platforms host thousands of job opportunities across various industries in the Philippines:</p>
                 
-                <h3>Search Strategy Guides</h3>
-                <ul>
-                    <li>Networking techniques for hidden opportunities</li>
-                    <li>LinkedIn profile optimization</li>
-                    <li>Industry-specific job board directory</li>
-                    <li>Application tracking system</li>
-                </ul>
-
-                <h3>Job Search Resources</h3>
-                <p>We've compiled a comprehensive list of resources to help you find the perfect job or internship:</p>
-                <ul>
-                    <li><strong>Industry Job Boards:</strong> Specialized platforms for your field</li>
-                    <li><strong>Company Research Tools:</strong> Resources to learn about potential employers</li>
-                    <li><strong>Salary Research:</strong> Tools to determine fair compensation</li>
-                    <li><strong>Network Building:</strong> Events and platforms to expand your professional contacts</li>
-                </ul>
-
-                <h3>Job Application Tracking</h3>
-                <p>Keep track of your job applications with our comprehensive tracking system:</p>
-                <ul>
-                    <li>Record application deadlines and status</li>
-                    <li>Store versions of resumes and cover letters</li>
-                    <li>Set reminders for follow-ups</li>
-                    <li>Save interviewer contact information</li>
-                </ul>
+                <div class="portal-hexagon">
+                    <div class="hexagon-container">
+                        <div class="hexagon jobstreet">
+                            <div class="hexagon-content">
+                                <i class="fas fa-briefcase"></i>
+                                <h4>JobStreet</h4>
+                                <a href="https://www.jobstreet.com.ph/" target="_blank" class="hex-link">Visit Site</a>
+                            </div>
+                        </div>
+                        <div class="hexagon indeed">
+                            <div class="hexagon-content">
+                                <i class="fas fa-search"></i>
+                                <h4>Indeed</h4>
+                                <a href="https://ph.indeed.com/" target="_blank" class="hex-link">Visit Site</a>
+                            </div>
+                        </div>
+                        <div class="hexagon linkedin">
+                            <div class="hexagon-content">
+                                <i class="fab fa-linkedin"></i>
+                                <h4>LinkedIn</h4>
+                                <a href="https://www.linkedin.com/" target="_blank" class="hex-link">Visit Site</a>
+                            </div>
+                        </div>
+                        <div class="hexagon kalibrr">
+                            <div class="hexagon-content">
+                                <i class="fas fa-building"></i>
+                                <h4>Kalibrr</h4>
+                                <a href="https://www.kalibrr.com/" target="_blank" class="hex-link">Visit Site</a>
+                            </div>
+                        </div>
+                        <div class="hexagon bossjob">
+                            <div class="hexagon-content">
+                                <i class="fas fa-laptop"></i>
+                                <h4>Bossjob</h4>
+                                <a href="https://bossjob.ph/" target="_blank" class="hex-link">Visit Site</a>
+                            </div>
+                        </div>
+                        <div class="hexagon mynimo">
+                            <div class="hexagon-content">
+                                <i class="fas fa-globe-asia"></i>
+                                <h4>Mynimo</h4>
+                                <a href="https://www.mynimo.com/" target="_blank" class="hex-link">Visit Site</a>
+                            </div>
+                        </div>
+                        <div class="hexagon onlinejobs">
+                            <div class="hexagon-content">
+                                <i class="fas fa-home"></i>
+                                <h4>OnlineJobs.ph</h4>
+                                <a href="https://www.onlinejobs.ph/" target="_blank" class="hex-link">Visit Site</a>
+                            </div>
+                        </div>
+                        <div class="hexagon bestjobs">
+                            <div class="hexagon-content">
+                                <i class="fas fa-star"></i>
+                                <h4>BestJobs.ph</h4>
+                                <a href="https://www.bestjobs.ph/" target="_blank" class="hex-link">Visit Site</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <a href="#" class="btn btn-primary">Find Opportunities</a>
+                <h3>Essential Job Search Tips for Filipino Students & Fresh Graduates</h3>
+                <p>Finding your first job or internship can be challenging, but with these practical tips, you can successfully launch your career in the Philippines:</p>
+                
+                <div class="feature-boxes">
+                    <div class="feature-box target">
+                        <div class="feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Target the Right Opportunities</h4>
+                            <ul>
+                                <li>Apply for roles that match your actual skills and qualifications</li>
+                                <li>Don't limit yourself to just your degree field - consider adjacent industries</li>
+                                <li>Research growing sectors in the Philippines (IT, BPO, E-commerce) for better prospects</li>
+                                <li>Consider internships or volunteering to build experience before applying for full-time roles</li>
+                                <li>Look for "fresh graduate" or "entry-level" tags in job listings</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-box timing">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Timing Your Applications</h4>
+                            <ul>
+                                <li>Apply to jobs posted within the last week for better response rates</li>
+                                <li>Many companies hire at the beginning of the year (January-March) and after midyear (July-September)</li>
+                                <li>Set up job alerts on platforms like JobStreet and Indeed to be notified of new opportunities</li>
+                                <li>Multinational companies often recruit fresh graduates in batches (check their career pages for schedules)</li>
+                                <li>Don't wait until after graduation - start applying during your final semester</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-box culture">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Filipino Workplace Culture Tips</h4>
+                            <ul>
+                                <li>Understand Filipino workplace expectations: punctuality, respect for hierarchy, and strong team orientation</li>
+                                <li>Develop your English communication skills (both written and verbal)</li>
+                                <li>Practice adaptability and resilience ("madiskarte" mindset)</li>
+                                <li>Emphasize your ability to work with diverse teams</li>
+                                <li>Learn basic business Tagalog for workplaces that operate in both languages</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Industry-Specific Tips for Filipino Graduates</h3>
+                
+                <div class="industry-grid">
+                    <div class="industry-box it">
+                        <div class="industry-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>IT & BPO Industries</h4>
+                        <div class="industry-tags">
+                            <span class="industry-tag">High Demand</span>
+                        </div>
+                        <ul class="industry-list">
+                            <li>Create a GitHub portfolio to showcase coding projects</li>
+                            <li>Earn relevant certifications (AWS, CompTIA, CCNA)</li>
+                            <li>Participate in hackathons and coding competitions</li>
+                            <li>Join tech communities like Developer Student Clubs</li>
+                            <li>Develop your English communication skills</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="industry-box business">
+                        <div class="industry-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Business & Finance</h4>
+                        <div class="industry-tags">
+                            <span class="industry-tag">Competitive</span>
+                        </div>
+                        <ul class="industry-list">
+                            <li>Stay updated on Philippine economic news</li>
+                            <li>Consider certification exams like CPA or CFA</li>
+                            <li>Develop Excel and financial modeling skills</li>
+                            <li>Join organizations like JCI Philippines</li>
+                            <li>Highlight analytical abilities in applications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="industry-box hospitality">
+                        <div class="industry-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4>Hospitality & Tourism</h4>
+                        <div class="industry-tags">
+                            <span class="industry-tag">Recovering</span>
+                        </div>
+                        <ul class="industry-list">
+                            <li>Highlight any customer service experience</li>
+                            <li>Develop multilingual skills (English, Asian languages)</li>
+                            <li>Get certified in food safety if relevant</li>
+                            <li>Show flexibility with scheduling (weekends, holidays)</li>
+                            <li>Develop knowledge of Philippine tourist destinations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="industry-box creative">
+                        <div class="industry-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4>Creative & Media</h4>
+                        <div class="industry-tags">
+                            <span class="industry-tag">Portfolio-Based</span>
+                        </div>
+                        <ul class="industry-list">
+                            <li>Create a professional portfolio website</li>
+                            <li>Build profiles on Behance, Dribbble, or YouTube</li>
+                            <li>Learn industry-standard software (Adobe Suite)</li>
+                            <li>Network with agencies via social media</li>
+                            <li>Take on freelance projects to build experience</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="industry-box healthcare">
+                        <div class="industry-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h4>Healthcare & Medical</h4>
+                        <div class="industry-tags">
+                            <span class="industry-tag">Essential</span>
+                        </div>
+                        <ul class="industry-list">
+                            <li>Keep licenses and registrations current (PRC)</li>
+                            <li>Consider specialized certifications (BLS, ACLS)</li>
+                            <li>Join healthcare professional associations</li>
+                            <li>Look for hospital training programs for fresh grads</li>
+                            <li>Consider telemedicine opportunities (growing field)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="industry-box education">
+                        <div class="industry-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Education & Teaching</h4>
+                        <div class="industry-tags">
+                            <span class="industry-tag">Stable</span>
+                        </div>
+                        <ul class="industry-list">
+                            <li>Obtain necessary teaching credentials (LET)</li>
+                            <li>Develop both online and in-person teaching skills</li>
+                            <li>Create a teaching portfolio with sample lessons</li>
+                            <li>Consider ESL certification for more opportunities</li>
+                            <li>Volunteer as a tutor to gain experience</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin: 3rem 0;">
+                    <h3>Ready to Start Your Career Journey?</h3>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn-primary btn-large"><i class="fas fa-search"></i> Search Jobs Now</a>
+                        <a href="#" class="btn-secondary btn-large"><i class="fas fa-graduation-cap"></i> Skills Assessment</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
