@@ -263,10 +263,76 @@
             align-items: center;
             justify-content: center;
             color: var(--gray);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .template-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .template-image:hover img {
+            transform: scale(1.05);
         }
 
         .template-info {
             padding: 1.5rem;
+        }
+
+        /* === Image Modal Styles === */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
         }
 
         /* === DO'S AND DON'TS === */
@@ -385,6 +451,11 @@
             .comparison-table th, 
             .comparison-table td {
                 padding: 0.75rem;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
             }
         }
     </style>
@@ -567,7 +638,7 @@
             <div class="templates-grid">
                 <div class="template-card">
                     <div class="template-image">
-                        <img src="prof.png" alt="Professional Resume Template" />
+                        <img src="prof.png" alt="Professional Resume Template" class="expandable-image" />
                     </div>
                     <div class="template-info">
                         <h4>Professional Template</h4>
@@ -577,7 +648,7 @@
                 
                 <div class="template-card">
                     <div class="template-image">
-                        <img src="/api/placeholder/280/300" alt="Creative Resume Template" />
+                        <img src="/api/placeholder/280/300" alt="Creative Resume Template" class="expandable-image" />
                     </div>
                     <div class="template-info">
                         <h4>Creative Template</h4>
@@ -587,7 +658,7 @@
                 
                 <div class="template-card">
                     <div class="template-image">
-                        <img src="/api/placeholder/280/300" alt="Executive Resume Template" />
+                        <img src="/api/placeholder/280/300" alt="Executive Resume Template" class="expandable-image" />
                     </div>
                     <div class="template-info">
                         <h4>Executive Template</h4>
@@ -599,45 +670,89 @@
     </div>
 </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#modules">Modules</a></li>
-                    <li><a href="index.html#Help Us Improve">Help Us Improve</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Connect With Us</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Contact Support</a></li>
-                        <li><a href="#">Feedback</a></li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+<!-- Modal for expanded images -->
+<div class="modal" id="imageModal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="expandedImage">
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#modules">Modules</a></li>
+                <li><a href="index.html#Help Us Improve">Help Us Improve</a></li>
+                </ul>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Career Resources Toolkit. All rights reserved.</p>
+            <div class="footer-column">
+                <h4>Connect With Us</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Contact Support</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
         </div>
-    </footer>
+        <div class="copyright">
+            <p>&copy; 2025 Career Resources Toolkit. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
 <!-- JS Scripts -->
 <script>
+    // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
+    });
+    
+    // Image expansion functionality
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('expandedImage');
+    const closeBtn = document.querySelector('.close-modal');
+    const expandableImages = document.querySelectorAll('.expandable-image');
+    
+    // Add click event to all template images
+    expandableImages.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.classList.add('active');
+            modalImg.src = this.src;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        });
+    });
+    
+    // Close modal when clicking the × button
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    });
+    
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
     });
 </script>
 </body>
