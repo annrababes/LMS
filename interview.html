@@ -227,23 +227,112 @@
             box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         }
 
-        .video-placeholder {
+        .video-thumbnail {
             height: 200px;
             background-color: var(--gray-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-size: 3rem;
-            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .play-button {
+            background-color: var(--primary);
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
         .video-info {
             padding: 1.5rem;
+        }
+        
+        /* Video Player Overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .video-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .video-player-container {
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+        }
+        
+        .video-player {
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            position: relative;
+        }
+        
+        .video-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .close-video {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            width: 36px;
+            height: 36px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            z-index: 1001;
+        }
+        
+        .close-video:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
         }
 
         /* === DO'S AND DON'TS === */
@@ -598,11 +687,13 @@
         <p class="text-center">Watch these mock interviews to better understand what to expect and how to respond effectively.</p>
         
         <div class="sample-interview">
-            <div class="video-container">
-                <div class="video-card">
-                    <div class="video-placeholder">
-                        <div class="play-button"><i class="fas fa-play-circle"></i></div>
-                        <p>Entry-Level Position Interview</p>
+            <div class="video-container" id="videoGrid">
+                <div class="video-card" data-video-id="I8B5ILs4qzA">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/I8B5ILs4qzA/maxresdefault.jpg" alt="Entry-Level Position Interview">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
                     </div>
                     <div class="video-info">
                         <h4>Entry-Level Job Interview</h4>
@@ -610,10 +701,12 @@
                     </div>
                 </div>
                 
-                <div class="video-card">
-                    <div class="video-placeholder">
-                        <div class="play-button"><i class="fas fa-play-circle"></i></div>
-                        <p>Mid-Career Position Interview</p>
+                <div class="video-card" data-video-id="HG68Ymazo18">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/HG68Ymazo18/maxresdefault.jpg" alt="Mid-Career Position Interview">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
                     </div>
                     <div class="video-info">
                         <h4>Mid-Level Professional Interview</h4>
@@ -621,10 +714,12 @@
                     </div>
                 </div>
                 
-                <div class="video-card">
-                    <div class="video-placeholder">
-                        <div class="play-button"><i class="fas fa-play-circle"></i></div>
-                        <p>Technical Position Interview</p>
+                <div class="video-card" data-video-id="1mHjMNZZvFo">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/1mHjMNZZvFo/maxresdefault.jpg" alt="Technical Position Interview">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
                     </div>
                     <div class="video-info">
                         <h4>Technical Interview Example</h4>
@@ -635,6 +730,16 @@
         </div>
     </div>
 </section>
+
+<!-- Video Overlay -->
+<div class="video-overlay" id="videoOverlay">
+    <div class="video-player-container">
+        <button class="close-video" id="closeVideo">&times;</button>
+        <div class="video-player" id="videoPlayer">
+            <!-- YouTube iframe will be inserted here by JavaScript -->
+        </div>
+    </div>
+</div>
 
 <!-- COMMON INTERVIEW QUESTIONS -->
 <section class="section" id="common-questions">
@@ -903,6 +1008,90 @@
                     otherItem.classList.remove('active');
                 }
             });
+        });
+    });
+    
+    // YouTube Video integration with fullscreen overlay
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load YouTube API
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        // Get elements
+        const videoCards = document.querySelectorAll('.video-card');
+        const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+        const videoOverlay = document.getElementById('videoOverlay');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const closeVideo = document.getElementById('closeVideo');
+        
+        // Variable to store active player
+        let activePlayer = null;
+        
+        // Function to close the video overlay
+        function closeVideoOverlay() {
+            if (activePlayer) {
+                // Pause the video
+                activePlayer.pauseVideo();
+            }
+            
+            // Hide the overlay
+            videoOverlay.classList.remove('active');
+            
+            // Remove the iframe after a short delay (after animation)
+            setTimeout(() => {
+                videoPlayer.innerHTML = '';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }, 300);
+        }
+        
+        // Set up click handlers once YouTube API is ready
+        window.onYouTubeIframeAPIReady = function() {
+            // Add click event to video thumbnails
+            videoThumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', function() {
+                    // Get video ID
+                    const videoId = videoCards[index].getAttribute('data-video-id');
+                    
+                    // Create iframe in the video player container
+                    videoPlayer.innerHTML = `<div id="youtube-player-${videoId}"></div>`;
+                    
+                    // Create and start YouTube player
+                    activePlayer = new YT.Player(`youtube-player-${videoId}`, {
+                        height: '100%',
+                        width: '100%',
+                        videoId: videoId,
+                        playerVars: {
+                            'autoplay': 1,
+                            'modestbranding': 1,
+                            'rel': 0,
+                            'showinfo': 0
+                        }
+                    });
+                    
+                    // Show the overlay
+                    videoOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                });
+            });
+        };
+        
+        // Close button click handler
+        closeVideo.addEventListener('click', closeVideoOverlay);
+        
+        // Close when clicking outside the player
+        videoOverlay.addEventListener('click', function(e) {
+            if (e.target === videoOverlay) {
+                closeVideoOverlay();
+            }
+        });
+        
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && videoOverlay.classList.contains('active')) {
+                closeVideoOverlay();
+            }
         });
     });
 </script>
